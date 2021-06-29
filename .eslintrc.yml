@@ -1,0 +1,13 @@
+extends:
+  - "airbnb-base"
+
+env:
+  node: true
+
+plugins:
+  - import
+
+rules:
+  no-console: off
+  import/extensions: off
+  no-await-in-loop: off
