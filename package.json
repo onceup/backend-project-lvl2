@@ -5,7 +5,8 @@
   "main": "bin/genDiff.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx -n --experimental-vm-modules jest",
+    "run-fixt": "node ./bin/gendiff ./__fixtures__/file1.json ./__fixtures__/file2.json"
   },
   "bin": {
     "gendiff": "bin/gendiff.js"
@@ -25,10 +26,12 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
+    "@jest/globals": "^27.0.6",
     "eslint": "^7.29.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jest": "^24.3.6",
-    "jest": "^27.0.6"
+    "jest": "^27.0.6",
+    "jest-cli": "^27.0.6"
   }
 }

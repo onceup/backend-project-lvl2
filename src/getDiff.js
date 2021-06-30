@@ -1,9 +1,14 @@
 import _ from 'lodash';
+import fs from 'fs';
+import path from 'path';
 import jsonParser from './parsers/jsonParser.js';
 
-const jsonDiff = (fileName1, fileName2) => {
-  const file1 = jsonParser(fileName1);
-  const file2 = jsonParser(fileName2);
+const getFullPath = (filePath) => path.resolve(process.cwd(), filePath);
+const readFile = (filePath) => fs.readFileSync(getFullPath(filePath), 'utf-8');
+
+const getDiff = (fileName1, fileName2) => {
+  const file1 = jsonParser(readFile(fileName1));
+  const file2 = jsonParser(readFile(fileName2));
 
   const keys = _.union([...Object.keys(file1), ...Object.keys(file2)]).sort();
   const result = keys.map((key) => {
@@ -21,4 +26,4 @@ const jsonDiff = (fileName1, fileName2) => {
   return result.join('\n');
 };
 
-export default jsonDiff;
+export default getDiff;
